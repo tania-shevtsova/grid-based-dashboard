@@ -1,0 +1,237 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Control Panel */
+.control-panel {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.control-panel h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #2c3e50;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.add-button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-button:hover {
+  background-color: #2980b9;
+}
+
+.add-button:active {
+  transform: translateY(1px);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+/* Grid Cell */
+.grid-cell {
+  min-height: 400px;
+  background-color: transparent;
+  border: 2px dashed transparent;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.grid-cell.drop-target {
+  background-color: #e8f5e9;
+  border-color: #4caf50;
+}
+
+.grid-cell.drop-invalid {
+  background-color: #ffebee;
+  border-color: #f44336;
+}
+
+.grid-cell.occupied {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* Block */
+.block {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: move;
+  transition: box-shadow 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.block:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.block.dragging {
+  opacity: 0.5;
+}
+
+.block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.block-title h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.block-subtitle {
+  font-size: 12px;
+  color: #7f8c8d;
+  white-space: pre-line;
+  line-height: 1.4;
+}
+
+/* Delete Button */
+.delete-button {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #95a5a6;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  opacity: 0;
+  flex-shrink: 0;
+}
+
+.block:hover .delete-button {
+  opacity: 1;
+}
+
+.delete-button:hover {
+  background-color: #ff5252;
+  color: white;
+}
+
+.delete-button:active {
+  transform: scale(0.95);
+}
+
+/* Block Content */
+.block-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Chart Container */
+.chart-container {
+  flex: 1;
+  position: relative;
+  min-height: 250px;
+}
+
+/* Text Block */
+.text-block-content {
+  padding: 10px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #34495e;
+}
+
+.text-block-content p {
+  margin-bottom: 15px;
+}
+
+.text-block-content p:last-child {
+  margin-bottom: 0;
+}
+
+.text-block-quote {
+  font-style: italic;
+  color: #7f8c8d;
+  padding-left: 15px;
+  border-left: 3px solid #3498db;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .grid {
+    gap: 15px;
+  }
+
+  .grid-cell {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 15px;
+  }
+
+  .control-panel {
+    padding: 15px;
+  }
+
+  .control-buttons {
+    flex-direction: column;
+  }
+
+  .add-button {
+    width: 100%;
+  }
+}
